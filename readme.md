@@ -14,6 +14,7 @@ Contiene el código SQL y PL/pgSQL del proyecto.
 - Código de las funciones PL/pgSQL: `funciones.sql`
 - Obtención de métricas: `metricas.sql`
 - Pruebas interactivas: `pruebas.sql`
+- Prueba de rendimiento: `rendimiento.sql`
 - Validación con datasets reales: `validacion-apps.sql`
 - Validación con PK calibrados: `validacion-cal.sql`
 
