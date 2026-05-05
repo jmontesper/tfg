@@ -37,3 +37,6 @@ join lateral
 
 -- Por último modificamos la descripción
 update via set denominacion = codigo || ' [' || denominacion || ']';
+
+-- Veamos cuántas geometrias hay por tramo.
+select st_numgeometries(geom) from tramo order by 1 desc;

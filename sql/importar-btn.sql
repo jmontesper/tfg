@@ -56,3 +56,6 @@ alter table btn_pk drop column if exists geom2;
 
 -- Por último colocamos una mejor denominación a las vías
 update via set denominacion = codigo || ' [' || denominacion || ']';
+
+-- Veamos cuántas geometrias hay por tramo.
+select st_numgeometries(geom) from tramo order by 1 desc;
