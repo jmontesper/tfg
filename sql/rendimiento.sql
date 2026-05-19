@@ -20,7 +20,7 @@ $$
         tiempo_ms double precision;
         suma      double precision;
     begin
-        for n in 100..120 by 10
+        for n in 100..1000 by 10
             loop
                 -- Contador a 0
                 suma := 0;

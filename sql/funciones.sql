@@ -30,7 +30,7 @@ begin
              limit 10
          ) t
     -- Ordeno por distancias ya no aproximadas, sino exactas
-    order by st_distance(t.geom, punto_busq)
+    order by st_distance(t.geom, punto_busq), t.id
     limit 1;
     -- Si la distancia supera el umbral, devolvemos null.
     if st_distance(tramo_geom, punto_busq) > UMBRAL then return null; end if;
@@ -116,7 +116,7 @@ begin
              limit 10
          ) t
     -- Ordeno por distancias ya no aproximadas, sino exactas
-    order by st_distance(t.geom, punto_busq)
+    order by st_distance(t.geom, punto_busq), t.codigo
     limit 1;
     -- Si la distancia supera el umbral, devolvemos null.
     if st_distance(tramo_geom, punto_busq) > UMBRAL then
