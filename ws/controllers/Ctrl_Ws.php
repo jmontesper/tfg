@@ -8,6 +8,9 @@ class Ctrl_Ws extends \zfx\Controller
 {
     public function _main()
     {
+        // Habilitamos el método GET al API
+        $this->enableGETMethod();
+
         // Envía cabeceras JSON
         \zfx\HttpTools::jsonHeaders();
 
@@ -73,7 +76,7 @@ class Ctrl_Ws extends \zfx\Controller
         $pk  = $this->checkPost('pk');
 
         // Llamamos al modelo, función pk2p.
-        $r   = TFG::pk2p($cod, new \zfx\Num($pk));
+        $r = TFG::pk2p($cod, new \zfx\Num($pk));
 
         // Si es NULL, hemos terminado (no se encontró un punto viable para el PK especificado).
         if (!$r) {
@@ -155,6 +158,23 @@ class Ctrl_Ws extends \zfx\Controller
             $data = $_POST[$var];
         }
         return $data;
+    }
+
+    // --------------------------------------------------------------------
+
+    /**
+     * Esta función mapea las variables aceptadas por el API obtenidas por GET a POST
+     * ejerciendo de capa de compatibilidad con el método GET.
+     * @return void
+     */
+    private function enableGETMethod()
+    {
+        // Mapeo de posibles variables obtenidas por el método GET
+        foreach (['code', 'point', 'pk'] as $variable) {
+            if (isset($_GET[$variable])) {
+                $_POST[$variable] = $_GET[$variable];
+            }
+        }
     }
 
     // --------------------------------------------------------------------
